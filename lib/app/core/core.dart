@@ -6,3 +6,4 @@ export 'di/di.dart';
 export 'entities/entity.dart';
 export 'controllers/controllers.dart';
 export 'states/base_state.dart';
+export 'routes/routes.dart';
