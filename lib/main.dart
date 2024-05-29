@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tractian/app/core/config/theme.dart';
+import 'package:tractian/app/core/core.dart';
 
-import 'app/core/icons/icons.dart';
 import 'app/design_system_kit/design_system_kit.dart';
 
 void main() {
@@ -13,6 +12,7 @@ void main() {
     statusBarIconBrightness: Brightness.dark,
   ));
   WidgetsFlutterBinding.ensureInitialized();
+  setup();
 
   runApp(const TractianApp());
 }
