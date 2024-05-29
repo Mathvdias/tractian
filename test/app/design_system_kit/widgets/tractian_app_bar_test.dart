@@ -7,7 +7,7 @@ import 'package:mockito/mockito.dart';
 import 'package:tractian/app/core/core.dart';
 import 'package:tractian/app/design_system_kit/design_system_kit.dart';
 
-class MockNavigatorObserver extends Mock implements NavigatorObserver {}
+final class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

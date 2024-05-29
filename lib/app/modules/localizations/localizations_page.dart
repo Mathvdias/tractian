@@ -22,10 +22,6 @@ class _LocationsPageState extends State<LocationsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-
-    final TextTheme textTheme = theme.textTheme;
-
     return Scaffold(
       appBar: TractianAppBar(
         svgBackAsset: SVGIcons.arrow,
@@ -43,8 +39,9 @@ class _LocationsPageState extends State<LocationsPage> {
                       const SizedBox(height: 24),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child:
-                            Text('Companies', style: textTheme.headlineMedium),
+                        child: TractianSearchBar(
+                          fieldValue: (String value) {},
+                        ),
                       ),
                       const SizedBox(height: 24),
                       Expanded(

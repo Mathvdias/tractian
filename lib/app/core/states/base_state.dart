@@ -2,11 +2,11 @@ import '../errors/base_exception.dart';
 
 abstract class BaseState {}
 
-class InitialState implements BaseState {}
+final class InitialState implements BaseState {}
 
-class LoadingState implements BaseState {}
+final class LoadingState implements BaseState {}
 
-class SuccessState<R> implements BaseState {
+final class SuccessState<R> implements BaseState {
   const SuccessState({
     required this.data,
   });
@@ -14,7 +14,7 @@ class SuccessState<R> implements BaseState {
   final R data;
 }
 
-class ErrorState<T extends BaseException> implements BaseState {
+final class ErrorState<T extends BaseException> implements BaseState {
   const ErrorState({
     required this.exception,
   });

@@ -11,7 +11,7 @@ String ASSETS(String companyId) => 'companies/$companyId/assets';
 int CONNECT_TIMEOUT = 500000;
 int RECEIVE_TIMEOUT = 500000;
 
-class Env {
+final class Env {
   var baseUrl = (vars["BASE_URL"]?.isEmpty ?? BASE_URL).toString();
 
   var companies = (vars["COMPANIES"]?.isEmpty ?? COMPANIES).toString();
