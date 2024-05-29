@@ -13,7 +13,7 @@ class LocationsPage extends StatefulWidget {
 }
 
 class _LocationsPageState extends State<LocationsPage> {
-  final localizationsController = di.get<LocalizationsController>();
+  final localizationsController = di.get<LocationsController>();
   @override
   void initState() {
     localizationsController.call(widget.order.id ?? '');

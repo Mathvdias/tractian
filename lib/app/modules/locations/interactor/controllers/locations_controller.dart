@@ -1,10 +1,9 @@
 import 'package:tractian/app/core/core.dart';
 import 'package:tractian/app/modules/modules.dart';
 
-final class LocalizationsController extends BaseController<BaseState> {
+final class LocationsController extends BaseController<BaseState> {
   final ILocationsRepository _localizationsRepository;
-  LocalizationsController(this._localizationsRepository)
-      : super(InitialState());
+  LocationsController(this._localizationsRepository) : super(InitialState());
 
   Future<void> call(String companyId) async {
     update(LoadingState());

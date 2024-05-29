@@ -1,2 +1,2 @@
 export 'home/home.dart';
-export 'localizations/localizations.dart';
+export 'locations/locations.dart';

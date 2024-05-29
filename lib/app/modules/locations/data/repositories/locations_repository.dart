@@ -1,8 +1,8 @@
 import 'package:multiple_result/multiple_result.dart';
 import 'package:tractian/app/core/core.dart';
-import 'package:tractian/app/modules/localizations/data/adapters/request_list_adapter.dart';
-import 'package:tractian/app/modules/localizations/interactor/entities/request_locations_entity.dart';
-import 'package:tractian/app/modules/localizations/interactor/repositories/i_locations_repository.dart';
+import 'package:tractian/app/modules/locations/data/adapters/request_locations_list_adapter.dart';
+import 'package:tractian/app/modules/locations/interactor/entities/request_locations_entity.dart';
+import 'package:tractian/app/modules/locations/interactor/repositories/i_locations_repository.dart';
 
 
 final class LocationsRepositoryImpl implements ILocationsRepository {

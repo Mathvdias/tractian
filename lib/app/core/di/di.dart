@@ -21,8 +21,8 @@ void setup() {
     () => HomeRepositoryImpl(di<IRestClient>()),
   );
 
-  di.registerFactory<LocalizationsController>(
-    () => LocalizationsController(di<ILocationsRepository>()),
+  di.registerFactory<LocationsController>(
+    () => LocationsController(di<ILocationsRepository>()),
   );
 
   di.registerFactory<ILocationsRepository>(

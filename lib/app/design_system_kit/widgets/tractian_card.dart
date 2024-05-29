@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tractian/app/core/core.dart';
 import 'package:tractian/app/core/entities/request/request_entity.dart';
-import 'package:tractian/app/modules/localizations/localizations_page.dart';
+import 'package:tractian/app/modules/locations/locations_page.dart';
 
 class TractianCard extends StatelessWidget {
   const TractianCard({
