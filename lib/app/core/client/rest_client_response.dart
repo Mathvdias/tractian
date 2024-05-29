@@ -1,3 +1,4 @@
+import 'package:multiple_result/multiple_result.dart';
 import 'package:tractian/app/core/core.dart';
 
 final class RestClientResponse implements RestClientHttpMessage {
@@ -13,3 +14,5 @@ final class RestClientResponse implements RestClientHttpMessage {
     required this.request,
   });
 }
+
+typedef Output<T> = Result<T, BaseException>;
