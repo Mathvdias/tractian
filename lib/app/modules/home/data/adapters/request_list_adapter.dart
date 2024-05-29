@@ -7,8 +7,8 @@ final class RequestListAdapter {
 
     var requests = data.map((entity) {
       return RequestEntity(
-        id: entity['id'],
-        name: entity['name'],
+        id: entity['id'] ?? '',
+        name: entity['name'] ?? '',
       );
     }).toList();
 

@@ -22,6 +22,7 @@ class TractianAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: svgBackAsset.isNotEmpty
           ? IconButton(
+              tooltip: MaterialLocalizations.of(context).backButtonTooltip,
               icon: SvgPicture.string(svgBackAsset),
               onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
             )

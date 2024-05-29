@@ -4,15 +4,15 @@ import 'package:tractian/app/modules/home/data/adapters/request_list_adapter.dar
 import 'package:tractian/app/modules/home/interactor/entities/request_list_entity.dart';
 import 'package:tractian/app/modules/home/interactor/repositories/i_home_repository.dart';
 
-var env = Env();
 
-class HomeRepositoryImpl implements IHomeRepository {
+
+final class HomeRepositoryImpl implements IHomeRepository {
   final IRestClient restClient;
 
   const HomeRepositoryImpl(this.restClient);
 
   @override
-  Future<Output<RequestListEntity>> getCompanies() async {
+  Future<Output<RequestListEntity>> call() async {
     try {
       final response =
           await restClient.get(RestClientRequest(path: env.companies));

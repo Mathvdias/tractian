@@ -7,7 +7,7 @@ class HomeController extends BaseController<BaseState> {
 
   Future<void> getCompanies() async {
     update(LoadingState());
-    final result = await _homeRepository.getCompanies();
+    final result = await _homeRepository.call();
     result.when(
       (right) => update(SuccessState(data: right)),
       (left) => update(ErrorState(exception: left)),

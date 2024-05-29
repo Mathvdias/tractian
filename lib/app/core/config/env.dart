@@ -15,10 +15,14 @@ class Env {
   var baseUrl = (vars["BASE_URL"]?.isEmpty ?? BASE_URL).toString();
 
   var companies = (vars["COMPANIES"]?.isEmpty ?? COMPANIES).toString();
-  var locations = (vars["LOCATIONS"]?.isEmpty ?? LOCATIONS).toString();
-  var assets = (vars["ASSETS"]?.isEmpty ?? ASSETS).toString();
+  locations(String companyId) =>
+      (vars["LOCATIONS"]?.isEmpty ?? LOCATIONS(companyId)).toString();
+  assets(String companyId) =>
+      (vars["ASSETS"]?.isEmpty ?? ASSETS(companyId)).toString();
   var connectTimeout =
       int.parse(vars["CONNECT_TIMEOUT"] ?? CONNECT_TIMEOUT.toString());
   var receiveTimeout =
       int.parse(vars["RECEIVE_TIMEOUT"] ?? RECEIVE_TIMEOUT.toString());
 }
+
+var env = Env();

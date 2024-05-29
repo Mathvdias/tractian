@@ -3,7 +3,6 @@ import 'package:tractian/app/core/client/dio/client_interceptor_dio_impl.dart';
 import 'package:tractian/app/core/client/dio/dio_adapter.dart';
 import 'package:tractian/app/core/core.dart';
 
-var env = Env();
 
 final class DioFactory {
   static Dio dio() {

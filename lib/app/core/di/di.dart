@@ -8,13 +8,24 @@ GetIt di = GetIt.instance;
 
 void setup() {
   di.registerFactory<Dio>(DioFactory.dio);
+
   di.registerSingleton<IRestClient>(
     RestClientDioImpl(dio: di<Dio>()),
   );
+
   di.registerFactory<HomeController>(
     () => HomeController(di<IHomeRepository>()),
   );
+
   di.registerFactory<IHomeRepository>(
     () => HomeRepositoryImpl(di<IRestClient>()),
+  );
+
+  di.registerFactory<LocalizationsController>(
+    () => LocalizationsController(di<ILocationsRepository>()),
+  );
+
+  di.registerFactory<ILocationsRepository>(
+    () => LocationsRepositoryImpl(di<IRestClient>()),
   );
 }
