@@ -4,7 +4,7 @@
 
 ## Índice
 1. [Introdução](#introdução)
-2. [Demo e Prints](#Demo-e-Prints)
+2. [Demo e Screenshots](#Screenshots)
 3. [Instalação](#instalação)
 4. [Arquitetura](#arquitetura)
 5. [Funcionalidades](#funcionalidades)
@@ -21,7 +21,34 @@ Os ativos são essenciais para a operação da indústria, incluindo desde equip
 
 ---
 
-## Demo e Prints
+## Demo e Screenshots
+## Screenshots
+
+## Screenshots
+
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/Mathvdias/tractian/assets/74201503/1866cd5d-2fa8-4507-9ebf-3b59f5bac584" alt="Screenshot 1" style="width: 100%;">
+      <p align="center">Home</p>
+    </td>
+    <td>
+      <img src="https://github.com/Mathvdias/tractian/assets/74201503/9dbbf910-ea6a-4406-81ef-c732dd791565" alt="Screenshot 2" style="width: 100%;">
+      <p align="center">Details</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/Mathvdias/tractian/assets/74201503/b4619467-a86d-44ca-af78-a4979038a9dc" alt="Screenshot 3" style="width: 100%;">
+      <p align="center">Filtro de Sensor de energia</p>
+    </td>
+    <td>
+      <img src="https://github.com/Mathvdias/tractian/assets/74201503/3dc30fa8-c344-4006-ab8b-a083edef9d8e" alt="Screenshot 4" style="width: 100%;">
+      <p align="center">Filtro de alarme crítico</p>
+    </td>
+  </tr>
+</table>
+
 
 
 ---
@@ -70,6 +97,36 @@ A aplicação foi desenvolvida seguindo uma arquitetura limpa e modular, compost
 - **modules**: Contém os módulos da aplicação, divididos em submódulos como `components`, `home`, `locations`, e `tree`.
 - **test**: Contém os testes unitários e de integração.
 - **main.dart**: Ponto de entrada da aplicação.
+# Tree View Application
+
+## Introdução
+Os ativos são essenciais para a operação da indústria, incluindo desde equipamentos de fabricação até veículos de transporte e sistemas de geração de energia. A gestão e manutenção adequadas são cruciais para garantir que continuem operando de forma eficiente e eficaz. Uma maneira prática de visualizar a hierarquia de ativos é através de uma estrutura de árvore. Este projeto visa desenvolver uma aplicação que visualize os ativos de uma empresa usando uma estrutura de árvore.
+
+## Estrutura de Pastas
+Aqui está a estrutura de pastas do projeto:
+
+```plaintext
+.
+├── .dart_tool/
+├── .idea/
+├── android/
+├── build/
+├── ios/
+├── lib/
+│   ├── app/
+│   │   ├── core/
+│   │   ├── design_system_kit/
+│   │   ├── modules/
+│   │   └── app_widget.dart
+│   └── main.dart
+├── test/
+├── web/
+├── .gitignore
+├── .metadata
+├── analysis_options.yaml
+├── pubspec.lock
+├── pubspec.yaml
+└── README.md
 
 ---
 
@@ -167,15 +224,6 @@ flutter pub get
 ```
 
 ---
-
-### Contato
-- **Nome**: [Seu Nome]
-- **Email**: [Seu Email]
-- **LinkedIn**: [Seu LinkedIn]
-
----
-
-Este README foi projetado para fornecer uma visão abrangente do projeto, facilitando a instalação, compreensão da arquitetura, e destacando os principais desafios e soluções implementadas.
 
 ### Contato
 - **Nome**: Matheus Vinicius da Silva Dias  
