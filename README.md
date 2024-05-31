@@ -19,6 +19,9 @@ Os ativos são essenciais para a operação da indústria, incluindo desde equip
 
 ## Screenshots
 
+
+[Tractian DEMO PWA](https://tractian-mathvdias.vercel.app/)
+
 <table>
   <tr>
     <td>
