@@ -1,7 +1,7 @@
 import 'package:tractian/app/core/core.dart';
 import 'package:tractian/app/modules/modules.dart';
 
-final class HomeController extends BaseController<BaseState> {
+class HomeController extends BaseController<BaseState> {
   final IHomeRepository _homeRepository;
   HomeController(this._homeRepository) : super(InitialState());
 

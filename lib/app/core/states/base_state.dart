@@ -16,7 +16,7 @@ final class SuccessState<R> implements BaseState {
 
 final class ErrorState<T extends BaseException> implements BaseState {
   const ErrorState({
-    required this.exception,
+    required this.exception, required ,
   });
 
   final T exception;
