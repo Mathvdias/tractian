@@ -20,7 +20,7 @@ const int RECEIVE_TIMEOUT = int.fromEnvironment(
 String LOCATIONS(String companyId) => 'companies/$companyId/locations';
 String ASSETS(String companyId) => 'companies/$companyId/assets';
 
-class Env {
+final class Env {
   final String baseUrl = BASE_URL;
   final String companies = COMPANIES;
   final int connectTimeout = CONNECT_TIMEOUT;
