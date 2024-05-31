@@ -46,24 +46,24 @@ class _LocationsPageState extends State<LocationsPage> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ValueListenableBuilder(
           valueListenable: localizationsController,
-          builder: (context, state, __) {
-            if (state is SuccessState<RequestLocationsListEntity>) {
-              return ValueListenableBuilder(
-                valueListenable: componentsController,
-                builder: (context, compState, __) {
-                  if (compState is SuccessState<RequestComponentsListEntity>) {
-                    return TreePage(
-                      locations: state.data.requests,
-                      components: compState.data.requests,
-                    );
-                  } else {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                },
-              );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
+          builder: (context, locState, __) {
+            return ValueListenableBuilder(
+              valueListenable: componentsController,
+              builder: (context, compState, __) {
+                if (locState is LoadingState || compState is LoadingState) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (locState
+                        is SuccessState<RequestLocationsListEntity> &&
+                    compState is SuccessState<RequestComponentsListEntity>) {
+                  return TreePage(
+                    locations: locState.data.requests,
+                    components: compState.data.requests,
+                  );
+                } else {
+                  return const Center(child: Text('Error loading data'));
+                }
+              },
+            );
           },
         ),
       ),
