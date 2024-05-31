@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final homeController = di.get<HomeController>();
+
   @override
   void initState() {
     homeController.getCompanies();
@@ -21,7 +22,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-
     final TextTheme textTheme = theme.textTheme;
 
     return Scaffold(
@@ -57,6 +57,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ],
+                  ),
+                ErrorState(:final exception) => Center(
+                    child: Text(
+                      exception.message,
+                      style: const TextStyle(color: Colors.red),
+                    ),
                   ),
                 _ => const Center(child: CircularProgressIndicator()),
               };

@@ -81,14 +81,14 @@ void main() {
       expect(find.text('Company 2'), findsOneWidget);
     });
 
-    // testWidgets('displays error message when an error occurs',
-    //     (WidgetTester tester) async {
-    //   mockHomeController
-    //       .setState(const ErrorState(exception: MockException(message: 'Error')));
+    testWidgets('displays error message when an error occurs',
+        (WidgetTester tester) async {
+      mockHomeController
+          .setState(const ErrorState(exception: MockException(message: 'Error')));
 
-    //   await tester.pumpWidget(createWidgetUnderTest());
+      await tester.pumpWidget(createWidgetUnderTest());
 
-    //   expect(find.text('Error'), findsOneWidget);
-    // });
+      expect(find.text('Error'), findsOneWidget);
+    });
   });
 }
