@@ -1,7 +1,7 @@
 import 'package:tractian/app/core/core.dart';
 import 'package:tractian/app/modules/components/interactor/interactor.dart';
 
-final class ComponentsController extends BaseController<BaseState> {
+class ComponentsController extends BaseController<BaseState> {
   final IComponentsRepository _componentsRepository;
   ComponentsController(this._componentsRepository) : super(InitialState());
 

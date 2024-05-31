@@ -1,7 +1,7 @@
 import 'package:tractian/app/core/core.dart';
 import 'package:tractian/app/modules/modules.dart';
 
-final class LocationsController extends BaseController<BaseState> {
+class LocationsController extends BaseController<BaseState> {
   final ILocationsRepository _localizationsRepository;
   LocationsController(this._localizationsRepository) : super(InitialState());
 
