@@ -33,6 +33,13 @@ class _TreePageState extends State<TreePage> {
     filteredAssets = List.from(widget.components);
   }
 
+  @override
+  void dispose() {
+    filteredLocations.clear();
+    filteredAssets.clear();
+    super.dispose();
+  }
+
   void filterData() {
     setState(() {
       List<RequestComponentsEntity> filteredAssetsTemp =

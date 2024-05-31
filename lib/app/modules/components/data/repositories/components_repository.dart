@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:tractian/app/core/core.dart';
 import 'package:tractian/app/modules/components/data/adapters/request_components_list_adapter.dart';
@@ -14,7 +16,9 @@ final class ComponentsRepositoryImpl extends IComponentsRepository {
       final response =
           await restClient.get(RestClientRequest(path: env.assets(companyId)));
 
-      return Success(RequestComponentsListAdapter.fromJson(response.data));
+      final parsedData = await compute(parseJson, json.encode(response.data));
+
+      return Success(parsedData);
     } on RestClientException catch (e) {
       return Error(e);
     }

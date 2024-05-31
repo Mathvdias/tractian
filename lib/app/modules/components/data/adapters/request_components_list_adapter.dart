@@ -1,7 +1,8 @@
+import 'dart:convert';
 import 'package:tractian/app/core/entities/entities.dart';
 import 'package:tractian/app/modules/components/interactor/interactor.dart';
 
-final class RequestComponentsListAdapter {
+class RequestComponentsListAdapter {
   static RequestComponentsListEntity fromJson(dynamic json) {
     var data = json as List<dynamic>;
 
@@ -22,4 +23,9 @@ final class RequestComponentsListAdapter {
       requests: requests,
     );
   }
+}
+
+RequestComponentsListEntity parseJson(String jsonString) {
+  final jsonData = json.decode(jsonString);
+  return RequestComponentsListAdapter.fromJson(jsonData);
 }
