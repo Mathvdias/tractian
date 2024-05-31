@@ -1,28 +1,33 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
-import 'dart:io' show Platform;
+const String BASE_URL = String.fromEnvironment(
+  'BASE_URL',
+  defaultValue: 'https://fake-api.tractian.com/',
+);
+const String COMPANIES = String.fromEnvironment(
+  'COMPANIES',
+  defaultValue: 'companies',
+);
+const int CONNECT_TIMEOUT = int.fromEnvironment(
+  'CONNECT_TIMEOUT',
+  defaultValue: 500000,
+);
+const int RECEIVE_TIMEOUT = int.fromEnvironment(
+  'RECEIVE_TIMEOUT',
+  defaultValue: 500000,
+);
 
-Map<String, String> vars = Platform.environment;
-
-String BASE_URL = 'https://fake-api.tractian.com/';
-String COMPANIES = 'companies';
 String LOCATIONS(String companyId) => 'companies/$companyId/locations';
 String ASSETS(String companyId) => 'companies/$companyId/assets';
-int CONNECT_TIMEOUT = 500000;
-int RECEIVE_TIMEOUT = 500000;
 
-final class Env {
-  var baseUrl = (vars["BASE_URL"]?.isEmpty ?? BASE_URL).toString();
+class Env {
+  final String baseUrl = BASE_URL;
+  final String companies = COMPANIES;
+  final int connectTimeout = CONNECT_TIMEOUT;
+  final int receiveTimeout = RECEIVE_TIMEOUT;
 
-  var companies = (vars["COMPANIES"]?.isEmpty ?? COMPANIES).toString();
-  locations(String companyId) =>
-      (vars["LOCATIONS"]?.isEmpty ?? LOCATIONS(companyId)).toString();
-  assets(String companyId) =>
-      (vars["ASSETS"]?.isEmpty ?? ASSETS(companyId)).toString();
-  var connectTimeout =
-      int.parse(vars["CONNECT_TIMEOUT"] ?? CONNECT_TIMEOUT.toString());
-  var receiveTimeout =
-      int.parse(vars["RECEIVE_TIMEOUT"] ?? RECEIVE_TIMEOUT.toString());
+  String locations(String companyId) => LOCATIONS(companyId);
+  String assets(String companyId) => ASSETS(companyId);
 }
 
-var env = Env();
+final env = Env();
