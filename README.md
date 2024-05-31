@@ -1,6 +1,4 @@
-# Tree View Application
-
----
+# Tractian Application
 
 ## Índice
 1. [Introdução](#introdução)
@@ -14,15 +12,10 @@
 9. [Conclusão](#conclusão)
 10. [Dependências](#dependências)
 
----
-
 ## Introdução
 Os ativos são essenciais para a operação da indústria, incluindo desde equipamentos de fabricação até veículos de transporte e sistemas de geração de energia. A gestão e manutenção adequadas são cruciais para garantir que continuem operando de forma eficiente e eficaz. Uma maneira prática de visualizar a hierarquia de ativos é através de uma estrutura de árvore. Este projeto visa desenvolver uma aplicação que visualize os ativos de uma empresa usando uma estrutura de árvore.
 
 ---
-
-## Demo e Screenshots
-## Screenshots
 
 ## Screenshots
 
@@ -48,8 +41,6 @@ Os ativos são essenciais para a operação da indústria, incluindo desde equip
     </td>
   </tr>
 </table>
-
-
 
 ---
 
@@ -86,23 +77,11 @@ A aplicação foi desenvolvida seguindo uma arquitetura limpa e modular, compost
     - Contém a lógica de negócios e entidades do domínio.
     - Inclui classes para representar locais e componentes, e controladores para gerenciar o estado da aplicação usando `ValueNotifier` em vez de BLoC.
 
-
 3. **Camada de Dados**:
     - Responsável pela comunicação com a API e manipulação de dados.
     - Utiliza repositórios para obter dados de locais e componentes da API fake-api.tractian.com.
 
 ### Estrutura de Pastas
-- **core**: Contém classes e funções centrais utilizadas em toda a aplicação.
-- **design_system_kit**: Contém componentes de interface reutilizáveis.
-- **modules**: Contém os módulos da aplicação, divididos em submódulos como `components`, `home`, `locations`, e `tree`.
-- **test**: Contém os testes unitários e de integração.
-- **main.dart**: Ponto de entrada da aplicação.
-# Tree View Application
-
-## Introdução
-Os ativos são essenciais para a operação da indústria, incluindo desde equipamentos de fabricação até veículos de transporte e sistemas de geração de energia. A gestão e manutenção adequadas são cruciais para garantir que continuem operando de forma eficiente e eficaz. Uma maneira prática de visualizar a hierarquia de ativos é através de uma estrutura de árvore. Este projeto visa desenvolver uma aplicação que visualize os ativos de uma empresa usando uma estrutura de árvore.
-
-## Estrutura de Pastas
 Aqui está a estrutura de pastas do projeto:
 
 ```plaintext
@@ -115,8 +94,24 @@ Aqui está a estrutura de pastas do projeto:
 ├── lib/
 │   ├── app/
 │   │   ├── core/
+│   │   │   ├── client/
+│   │   │   ├── config/
+│   │   │   ├── controllers/
+│   │   │   ├── di/
+│   │   │   ├── entities/
+│   │   │   ├── errors/
+│   │   │   ├── icons/
+│   │   │   ├── routes/
+│   │   │   ├── states/
+│   │   │   └── core.dart
 │   │   ├── design_system_kit/
+│   │   │   ├── widgets/
+│   │   │   └── design_system_kit.dart
 │   │   ├── modules/
+│   │   │   ├── components/
+│   │   │   ├── home/
+│   │   │   ├── locations/
+│   │   │   └── tree/
 │   │   └── app_widget.dart
 │   └── main.dart
 ├── test/
@@ -127,6 +122,7 @@ Aqui está a estrutura de pastas do projeto:
 ├── pubspec.lock
 ├── pubspec.yaml
 └── README.md
+```
 
 ---
 
@@ -216,20 +212,6 @@ O projeto utiliza os seguintes pacotes:
 - `mockito: ^5.4.4`
 - `dio: ^5.4.3+1`
 - `get_it: ^7.7.0`
-- `multiple_result: ^5.1.0`
-
-Para instalar todas as dependências, execute:
-```bash
-flutter pub get
-```
+- `multiple_result: ^
 
 ---
-
-### Contato
-- **Nome**: Matheus Vinicius da Silva Dias  
-- **Email**: mattmvc56@gmail.com
-- **LinkedIn**: https://www.linkedin.com/in/matheusvdias/
-
----
-
-Este README foi projetado para fornecer uma visão abrangente do projeto, facilitando a instalação, compreensão da arquitetura, e destacando os principais desafios e soluções implementadas.
