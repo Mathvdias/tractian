@@ -1,22 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 
 class TractianSearchBar extends StatelessWidget {
   const TractianSearchBar({
     super.key,
-    required this.fieldValue,
+    required this.onChanged,
+    required this.onSubmitted,
   });
 
-  final ValueChanged<String> fieldValue;
+  final ValueChanged<String> onChanged;
+  final ValueChanged<String> onSubmitted;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoSearchTextField(
-      onChanged: (String value) {
-        fieldValue('The text has changed to: $value');
-      },
-      onSubmitted: (String value) {
-        fieldValue('Submitted text: $value');
-      },
+      onChanged: onChanged,
+      onSubmitted: onSubmitted,
     );
   }
 }

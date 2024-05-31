@@ -2,10 +2,10 @@ import 'package:tractian/app/core/core.dart';
 
 final class RequestLocationsEntity extends Entity {
   final String name;
-  final String companyId;
+  final String parentId;
   RequestLocationsEntity({
     required String id,
     required this.name,
-    required this.companyId,
+    required this.parentId,
   }) : super(id);
 }

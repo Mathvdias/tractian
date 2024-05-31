@@ -9,7 +9,7 @@ final class RequestLocationsListAdapter {
       return RequestLocationsEntity(
         id: entity['id'] ?? '',
         name: entity['name'] ?? '',
-        companyId: entity['companyId'] ?? '',
+        parentId: entity['parentId'] ?? '',
       );
     }).toList();
 
