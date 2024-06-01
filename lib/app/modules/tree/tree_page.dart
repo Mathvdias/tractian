@@ -40,103 +40,94 @@ class _TreePageState extends State<TreePage> {
     super.dispose();
   }
 
+  bool matchesFilter(RequestComponentsEntity asset) {
+    if (showEnergySensors && asset.sensorType != 'energy') {
+      return false;
+    }
+    if (showCriticalSensors && asset.status != 'alert') {
+      return false;
+    }
+    return true;
+  }
+
+  bool matchesQuery(String name) {
+    return name.toLowerCase().contains(searchTerm.toLowerCase());
+  }
+
   void filterData() {
     setState(() {
-      List<RequestComponentsEntity> filteredAssetsTemp =
-          List.from(widget.components);
+      filteredAssets = widget.components.where((asset) {
+        bool matches = matchesFilter(asset);
+        bool queryMatches = matchesQuery(asset.name);
+        return matches && queryMatches;
+      }).toList();
 
-      if (showEnergySensors) {
-        filteredAssetsTemp = filteredAssetsTemp
-            .where((asset) => asset.sensorType == 'energy')
-            .toList();
-      }
-      if (showCriticalSensors) {
-        filteredAssetsTemp = filteredAssetsTemp
-            .where((asset) => asset.status == 'alert')
-            .toList();
-      }
-      if (searchTerm.isNotEmpty) {
-        filteredAssetsTemp = filteredAssetsTemp
-            .where((asset) =>
-                asset.name.toLowerCase().contains(searchTerm.toLowerCase()))
-            .toList();
-        filteredLocations = widget.locations
-            .where((location) =>
-                location.name.toLowerCase().contains(searchTerm.toLowerCase()))
-            .toList();
-      } else {
-        filteredLocations = List.from(widget.locations);
-      }
+      filteredLocations = widget.locations.where((location) {
+        bool queryMatches = matchesQuery(location.name);
+        return queryMatches;
+      }).toList();
+    });
 
-      Set<String?> parentIds = filteredAssetsTemp
+    identifyParents();
+  }
+
+  void identifyParents() {
+    Set<String?> parentIds = filteredAssets
+        .map((asset) => asset.parentId)
+        .where((id) => id.isNotEmpty)
+        .toSet();
+    while (parentIds.isNotEmpty) {
+      final newParents = widget.components
+          .where((asset) => parentIds.contains(asset.id))
+          .toList();
+      parentIds = newParents
           .map((asset) => asset.parentId)
           .where((id) => id.isNotEmpty)
           .toSet();
-
-      while (parentIds.isNotEmpty) {
-        final newParents = widget.components
-            .where((asset) => parentIds.contains(asset.id))
-            .toList();
-        parentIds = newParents
-            .map((asset) => asset.parentId)
-            .where((id) => id.isNotEmpty)
-            .toSet();
-        for (var parent in newParents) {
-          if (!filteredAssetsTemp.contains(parent)) {
-            filteredAssetsTemp.add(parent);
-          }
+      for (var parent in newParents) {
+        if (!filteredAssets.contains(parent)) {
+          filteredAssets.add(parent);
         }
       }
+    }
 
-      Set<String?> locationParentIds = filteredLocations
+    Set<String?> locationParentIds = filteredLocations
+        .map((location) => location.parentId)
+        .where((id) => id.isNotEmpty)
+        .toSet();
+    while (locationParentIds.isNotEmpty) {
+      final newLocationParents = widget.locations
+          .where((location) => locationParentIds.contains(location.id))
+          .toList();
+      locationParentIds = newLocationParents
           .map((location) => location.parentId)
           .where((id) => id.isNotEmpty)
           .toSet();
-
-      while (locationParentIds.isNotEmpty) {
-        final newLocationParents = widget.locations
-            .where((location) => locationParentIds.contains(location.id))
-            .toList();
-        locationParentIds = newLocationParents
-            .map((location) => location.parentId)
-            .where((id) => id.isNotEmpty)
-            .toSet();
-        for (var parent in newLocationParents) {
-          if (!filteredLocations.contains(parent)) {
-            filteredLocations.add(parent);
-          }
+      for (var parent in newLocationParents) {
+        if (!filteredLocations.contains(parent)) {
+          filteredLocations.add(parent);
         }
       }
+    }
 
-      Set<String?> assetLocationIds = filteredAssetsTemp
-          .map((asset) => asset.locationId)
+    Set<String?> assetLocationIds = filteredAssets
+        .map((asset) => asset.locationId)
+        .where((id) => id.isNotEmpty)
+        .toSet();
+    while (assetLocationIds.isNotEmpty) {
+      final newLocationParents = widget.locations
+          .where((location) => assetLocationIds.contains(location.id))
+          .toList();
+      assetLocationIds = newLocationParents
+          .map((location) => location.parentId)
           .where((id) => id.isNotEmpty)
           .toSet();
-
-      while (assetLocationIds.isNotEmpty) {
-        final newLocationParents = widget.locations
-            .where((location) => assetLocationIds.contains(location.id))
-            .toList();
-        assetLocationIds = newLocationParents
-            .map((location) => location.parentId)
-            .where((id) => id.isNotEmpty)
-            .toSet();
-        for (var parent in newLocationParents) {
-          if (!filteredLocations.contains(parent)) {
-            filteredLocations.add(parent);
-          }
+      for (var parent in newLocationParents) {
+        if (!filteredLocations.contains(parent)) {
+          filteredLocations.add(parent);
         }
       }
-
-      filteredAssets = List.from(filteredAssetsTemp);
-
-      if (showEnergySensors || showCriticalSensors) {
-        filteredLocations = filteredLocations
-            .where((location) =>
-                filteredAssets.any((asset) => asset.locationId == location.id))
-            .toList();
-      }
-    });
+    }
   }
 
   @override
@@ -228,8 +219,8 @@ class _TreePageState extends State<TreePage> {
       tree.add(buildLocationNode(location, locationMap, assetMap));
     }
 
-    for (var asset in assets
-        .where((asset) => asset.parentId.isEmpty && asset.locationId.isEmpty)) {
+    for (var asset in assets.where(
+        (asset) => (asset.parentId.isEmpty) && (asset.locationId.isEmpty))) {
       tree.add(buildAssetNode(asset, assetMap));
     }
 
