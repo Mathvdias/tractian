@@ -1,9 +1,11 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:tractian/app/core/core.dart';
 import 'package:tractian/app/modules/locations/data/adapters/request_locations_list_adapter.dart';
 import 'package:tractian/app/modules/locations/interactor/entities/request_locations_entity.dart';
 import 'package:tractian/app/modules/locations/interactor/repositories/i_locations_repository.dart';
-
 
 final class LocationsRepositoryImpl implements ILocationsRepository {
   final IRestClient restClient;
@@ -16,9 +18,12 @@ final class LocationsRepositoryImpl implements ILocationsRepository {
       final response = await restClient
           .get(RestClientRequest(path: env.locations(companyId)));
 
-      return Success(RequestLocationsListAdapter.fromJson(response.data));
+      final parsedData =
+          await compute(parseLocationsJson, json.encode(response.data));
+      return Success(parsedData);
     } on RestClientException catch (e) {
       return Error(e);
     }
   }
 }
+
